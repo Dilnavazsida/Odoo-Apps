@@ -1,1 +1,1 @@
-# Odoo Apps - 18
+# Odoo Apps
