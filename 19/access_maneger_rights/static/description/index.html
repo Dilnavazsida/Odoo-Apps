@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Access Rights Manager - Hide Menu, Field &amp; Button | NextGen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --ng-primary: #4f46e5;
+            --ng-accent: #06b6d4;
+            --ng-violet: #7c3aed;
+            --ng-dark: #0f172a;
+            --ng-muted: #64748b;
+            --ng-card: #ffffff;
+            --ng-bg: #f1f5f9;
+        }
+        body { background: var(--ng-bg); color: var(--ng-dark); font-family: Arial, Helvetica, sans-serif; }
+        .ng-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 45%, #0e7490 100%);
+            border-radius: 24px;
+            padding: 36px 28px;
+            color: #fff;
+            margin-top: 24px;
+        }
+        .ng-brand-name { font-size: 28px; font-weight: 800; letter-spacing: 0.5px; margin: 0; }
+        .ng-tagline { opacity: 0.85; font-size: 14px; margin: 4px 0 0 0; }
+        .ng-stat {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 18px 16px;
+            height: 100%;
+            backdrop-filter: blur(4px);
+        }
+        .ng-stat h6 { font-size: 13px; opacity: 0.85; margin: 0 0 6px 0; font-weight: 600; }
+        .ng-stat .num { font-size: 26px; font-weight: 800; margin: 0; color: #67e8f9; }
+        .ng-chip {
+            display: inline-block;
+            background: #fff;
+            color: var(--ng-dark);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 700;
+            font-size: 13px;
+            margin: 4px;
+        }
+        .ng-cta {
+            background: linear-gradient(90deg, var(--ng-accent), var(--ng-violet));
+            color: #fff !important;
+            border-radius: 999px;
+            padding: 12px 22px;
+            text-decoration: none !important;
+            display: inline-block;
+            font-weight: 700;
+        }
+        .ng-cta span {
+            background: #fff;
+            color: var(--ng-dark);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-left: 8px;
+            font-size: 12px;
+        }
+        .ng-section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--ng-dark);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .ng-underline {
+            width: 90px; height: 4px; margin: 0 auto 28px auto; border-radius: 4px;
+            background: linear-gradient(90deg, var(--ng-accent), var(--ng-violet));
+        }
+        .ng-feature {
+            background: var(--ng-card);
+            border-radius: 16px;
+            border-left: 5px solid var(--ng-primary);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            padding: 18px;
+            height: 100%;
+        }
+        .ng-feature img { width: 42px; height: 42px; margin-right: 14px; }
+        .ng-tabs .nav-link {
+            border: none !important;
+            border-radius: 999px !important;
+            color: var(--ng-dark);
+            font-weight: 700;
+            padding: 10px 22px;
+            background: #e2e8f0;
+            margin: 0 6px;
+        }
+        .ng-tabs .nav-link.active {
+            background: linear-gradient(90deg, var(--ng-primary), var(--ng-violet)) !important;
+            color: #fff !important;
+        }
+        .ng-faq-q {
+            background: #fff;
+            border-radius: 12px;
+            padding: 14px 18px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--ng-dark);
+            border: 1px solid #e2e8f0;
+        }
+        .ng-faq-a {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: 12px 18px;
+            color: var(--ng-muted);
+        }
+        .ng-service {
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px 16px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 18px rgba(15,23,42,0.05);
+            transition: transform .15s ease;
+        }
+        .ng-service:hover { transform: translateY(-3px); border-color: #a5b4fc; }
+        .ng-service p { margin: 10px 0 0 0; font-weight: 800; color: var(--ng-dark); }
+        .ng-contact {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: #fff; border: 2px solid var(--ng-dark); border-radius: 14px;
+            padding: 14px; font-weight: 800; color: var(--ng-dark); text-decoration: none !important;
+        }
+        .ng-contact:hover { background: var(--ng-dark); color: #fff !important; }
+    </style>
+</head>
+<body>
+<div class="container" style="max-width: 1100px; padding-bottom: 40px;">
+
+    <!-- HERO / BRAND (NextGen — different from Wan Buffer layout) -->
+    <section class="ng-hero">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-7 d-flex align-items-center gap-3">
+                <img src="nextgen_logo.png" alt="NextGen" width="72" height="72"
+                     style="border-radius:50%; border:2px solid rgba(255,255,255,0.35);"/>
+                <div>
+                    <p class="ng-brand-name">NextGen</p>
+                    <p class="ng-tagline">Smart Odoo Solutions · Access · Security · Growth</p>
+                </div>
+            </div>
+            <div class="col-md-5 text-md-end mt-3 mt-md-0">
+                <img src="https://res.cloudinary.com/dghplu26l/image/upload/v1748932177/odoo_logo_medium_uknl2o.png"
+                     alt="Odoo" width="160" style="filter: brightness(0) invert(1); opacity: 0.95;"/>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Odoo Version</h6><p class="num">19.0</p></div></div>
+            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Setup</h6><p class="num" style="font-size:20px;">No Code</p></div></div>
+            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Access Rules</h6><p class="num" style="font-size:20px;">Per User</p></div></div>
+            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Companies</h6><p class="num" style="font-size:20px;">Multi</p></div></div>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <a class="ng-cta" href="mailto:next.gen.solutions2122@gmail.com">
+                Demo / Support / Customization
+                <span>next.gen.solutions2122@gmail.com</span>
+            </a>
+            <div>
+                <span class="ng-chip"><i class="fa fa-check"></i> Community</span>
+                <span class="ng-chip"><i class="fa fa-check"></i> Enterprise</span>
+                <span class="ng-chip"><i class="fa fa-check"></i> Odoo.sh</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE INTRO / DESCRIPTION -->
+    <section class="mt-5">
+        <h2 class="ng-section-title">Access Rights Manager - Hide Menu, Field &amp; Button</h2>
+        <div class="ng-underline"></div>
+        <div style="background:#fff; border-radius:18px; border:1px solid #e2e8f0; padding:28px 26px; box-shadow:0 8px 24px rgba(15,23,42,0.05);">
+            <h3 style="margin:0 0 12px 0; font-size:20px; font-weight:800; color:#0f172a; text-align:center;">
+                Complete User Access Control for Odoo — Without Coding
+            </h3>
+            <p style="text-align:center; font-size:16px; color:#475569; max-width:880px; margin:0 auto 18px auto; line-height:1.7;">
+                <strong>Access Rights Manager</strong> helps you manage who can see and do what inside Odoo.
+                Create simple rules, assign users and companies, then control menus, models, fields, buttons,
+                tabs, filters, group by, reports, actions, domains and chatter — all from one centralized app.
+            </p>
+            <p style="text-align:center; font-size:15px; color:#64748b; max-width:880px; margin:0 auto 20px auto; line-height:1.7;">
+                Perfect for businesses that need role-based restrictions for sales, warehouse, accounts or
+                support teams, without creating complex security groups or writing XML / Python code.
+            </p>
+
+            <div class="row g-3 mt-1">
+                <div class="col-md-4">
+                    <div style="background:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                        <div style="font-weight:800; color:#4f46e5; margin-bottom:6px;">Why this app?</div>
+                        <div style="font-size:14px; color:#475569; line-height:1.6;">
+                            Native Odoo access rights are powerful but technical. This app gives admins a clear UI
+                            to apply day-to-day restrictions quickly and safely.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                        <div style="font-weight:800; color:#7c3aed; margin-bottom:6px;">Who is it for?</div>
+                        <div style="font-size:14px; color:#475569; line-height:1.6;">
+                            Odoo admins, implementation partners and companies that need per-user visibility
+                            control across Sales, Inventory, Accounting and more.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                        <div style="font-weight:800; color:#06b6d4; margin-bottom:6px;">What you get</div>
+                        <div style="font-size:14px; color:#475569; line-height:1.6;">
+                            Global flags, menu/field/button/tab hiding, filter &amp; group-by control,
+                            domain-based record limits, chatter control and multi-company support.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES — left-border cards (not Wan Buffer boxed icon style) -->
+    <section class="mt-5">
+        <h2 class="ng-section-title">Features</h2>
+        <div class="ng-underline"></div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/01_global.png" alt=""/>
+                    <span style="font-weight:700;">Global Read-Only, Disable Import/Export/Delete/Archive, Hide Chatter, Disable Developer Mode.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/02_menu.png" alt=""/>
+                    <span style="font-weight:700;">Hide any menu or sub-menu for selected users.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/03_model.png" alt=""/>
+                    <span style="font-weight:700;">Model access: Create, Edit, Delete, Duplicate, Import, Export, Archive + hide Reports &amp; Actions.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/04_field.png" alt=""/>
+                    <span style="font-weight:700;">Field access: Invisible, Read-Only, Required, Remove External Link.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/05_button.png" alt=""/>
+                    <span style="font-weight:700;">Hide Buttons and Tabs/Pages with auto suggestions from views.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/06_filter.png" alt=""/>
+                    <span style="font-weight:700;">Hide Filters and Group By options from the search panel.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/07_domain.png" alt=""/>
+                    <span style="font-weight:700;">Domain / record access so users only see relevant records.</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ng-feature d-flex align-items-center">
+                    <img src="features/08_chatter.png" alt=""/>
+                    <span style="font-weight:700;">Hide Chatter globally or per model. Multi-company rules supported.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="mt-5">
+        <ul class="nav nav-pills justify-content-center ng-tabs mb-4" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#ng-setup" type="button">Setup</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ng-faq" type="button">FAQs</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ng-support" type="button">Support</button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="ng-setup">
+                <div style="background:#fff; border-radius:16px; padding:24px; border:1px solid #e2e8f0;">
+                        </p>
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;"> Install the module from Apps</h5>
+                        <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;">Search “Access Rights Manager” and click Activate.</p>
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/01_install.png" alt="1. Install the module from Apps"/>
+                        </div>
+
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;"> Enable Access Rights Manager on the user</h5>
+                        <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;">Settings → Users → Extra Rights → check Access Rights Manager.</p>
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/02_enable_group.png" alt="2. Enable Access Rights Manager on the user"/>
+                        </div>
+
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;"> Open Access Rights Manager from the home apps</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/03_app_home.png" alt="3. Open Access Rights Manager from the home apps"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Read-Only Global Access</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Configure read-only rules so selected users can view records but cannot create or edit them.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Read-Only on the rule</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/04_readonly_config.png" alt="Configuration: enable Read-Only on the rule"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: New / create actions are removed for that user</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/05_readonly_after.png" alt="After: New / create actions are removed for that user"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Export Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Prevent selected users from exporting records from list views.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Export is available in Actions</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/06_export_before.png" alt="Before: Export is available in Actions"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Disable Export</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/07_export_config.png" alt="Configuration: enable Disable Export"/>
+                        </div>
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Export is removed from Actions</h5>
+                        <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;">Selected users no longer see Export in the Actions menu.</p>
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/08_export_after.png" alt="After: Export is removed from Actions"/>
+                        </div>
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Import Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide import options so users cannot upload external data into the system.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Import records is available</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/09_import_before.png" alt="Before: Import records is available"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Disable Import</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/10_import_config.png" alt="Configuration: enable Disable Import"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Import records is hidden from the settings menu</h5>
+                        <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;">Users can no longer import records from the list view settings menu.</p>
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/12_import_after.png" alt="After: Import records is hidden from the cog menu"/>
+                        </div>
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Archive / Unarchive Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Remove Archive and Unarchive from the Actions menu for selected users.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Archive / Unarchive are available</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/12_archive_before.png" alt="Before: Archive / Unarchive are available"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Disable Archive/Unarchive</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/13_archive_config.png" alt="Configuration: enable Disable Archive/Unarchive"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Archive / Unarchive are removed from Actions</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/14_archive_after.png" alt="After: Archive / Unarchive are removed from Actions"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Delete Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide delete so users cannot remove records from list or form actions.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Delete is available in Actions</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/15_delete_before.png" alt="Before: Delete is available in Actions"/>
+                        </div>
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before (Sales): Delete is available in Actions</h5>
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/08_delete_before_sales.png" alt="Before (Sales): Delete is available in Actions"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Disable Delete</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/16_delete_config.png" alt="Configuration: enable Disable Delete"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Delete is no longer shown in Actions</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/17_delete_after.png" alt="After: Delete is no longer shown in Actions"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Chatter Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Remove the chatter panel from forms for selected users.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Chatter is visible on the form</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/18_chatter_before.png" alt="Before: Chatter is visible on the form"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Hide Chatter</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/19_chatter_config.png" alt="Configuration: enable Hide Chatter"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Chatter panel is hidden</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/20_chatter_after.png" alt="After: Chatter panel is hidden"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Developer (Debug) Mode</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Restrict developer / debug mode so users cannot inspect technical field metadata.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Debug field info is available</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/21_debug_before.png" alt="Before: Debug field info is available"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: enable Disable Developer Mode</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/22_debug_config.png" alt="Configuration: enable Disable Developer Mode"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Developer / debug field info is blocked</h5>
+                        <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;">Affected users no longer get technical field tooltips or developer mode access.</p>
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/23_debug_after.png" alt="After: Developer / debug field info is blocked"/>
+                        </div>
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Menu &amp; Sub-menu</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide specific menus or submenus so users only see what they need.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Quotations and Orders menus are visible</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/24_menu_before.png" alt="Before: Quotations and Orders menus are visible"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: add menus under Hide Menu</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/25_menu_config.png" alt="Configuration: add menus under Hide Menu"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: hidden menus no longer appear in navigation</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/26_menu_after.png" alt="After: hidden menus no longer appear in navigation"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Model Reports</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Control visibility of model-specific print reports (PDF Quote, Quotation / Order, etc.).</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Print reports are visible</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/27_report_before.png" alt="Before: Print reports are visible"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: select reports under Hide Reports</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/28_report_config.png" alt="Configuration: select reports under Hide Reports"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Print reports are removed from the menu</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/29_report_after.png" alt="After: Print reports are removed from the menu"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Model Actions</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide specific server / contextual actions (Send email, Share, etc.) for selected users.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: actions are visible in the cog menu</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/30_action_before.png" alt="Before: actions are visible in the cog menu"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: select actions under Hide Actions</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/31_action_config.png" alt="Configuration: select actions under Hide Actions"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: selected actions are hidden</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/32_action_after.png" alt="After: selected actions are hidden"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Model Access Management</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Per model: hide create, edit, delete, duplicate, import, export, archive, plus reports and actions.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: New, Export and Delete are available</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/33_model_before.png" alt="Before: New, Export and Delete are available"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: Hide Create / Delete / Export on Sales Order</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/34_model_config.png" alt="Configuration: Hide Create / Delete / Export on Sales Order"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: restricted actions are removed for that model</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/35_model_after.png" alt="After: restricted actions are removed for that model"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Field Access Rights</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Make fields invisible, read-only, or required. Protect sensitive data on forms and lists.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: fields such as Payment Terms and Quotation Template are visible</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/36_field_before.png" alt="Before: fields such as Payment Terms and Quotation Template are visible"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: set fields Invisible under Field Access</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/37_field_config.png" alt="Configuration: set fields Invisible under Field Access"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: selected fields are hidden from the user</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/38_field_after.png" alt="After: selected fields are hidden from the user"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Button / Tab / Page Access</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Show or hide form buttons and notebook tabs based on the user rule.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Confirm button and Other Info tab are visible</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/39_button_before.png" alt="Before: Confirm button and Other Info tab are visible"/>
+                        </div>
+                        
+
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: hide Confirm button and Other Info tab</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/40_button_config.png" alt="Configuration: hide Confirm button and Other Info tab"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: button and tab are removed for that user</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/41_button_after.png" alt="After: button and tab are removed for that user"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Filter / Group By Access</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide specific search filters and group-by options from the search panel.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Order Date filter and Group By options are visible</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/42_filter_before.png" alt="Before: Order Date filter and Group By options are visible"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: select filters and group-by to hide</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/43_filter_config.png" alt="Configuration: select filters and group-by to hide"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: selected filters / group-by options are gone</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/44_filter_after.png" alt="After: selected filters / group-by options are gone"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Filter Domain Access Control</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Limit which records users can see using a domain. Preview shows how many records match.</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: user sees all statuses in the list</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/45_domain_before.png" alt="Before: user sees all statuses in the list"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: domain Status = Quotation with record preview</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/46_domain_config.png" alt="Configuration: domain Status = Quotation with record preview"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: user only sees matching records (e.g. Quotations)</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/47_domain_after.png" alt="After: user only sees matching records (e.g. Quotations)"/>
+                        </div>
+
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Chatter Model Access Control</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide chatter only on selected models (instead of globally).</p>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Before: Chatter is visible on Sales Order</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/48_model_chatter_before.png" alt="Before: Chatter is visible on Sales Order"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">Configuration: Hide Chatter for Sales Order model</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/49_model_chatter_config.png" alt="Configuration: Hide Chatter for Sales Order model"/>
+                        </div>
+
+                        <h5 style="color:#0f172a;font-weight:800;margin:28px 0 10px 0;">After: Chatter is hidden on that model</h5>
+                        
+                        <div class="col-md-12 mb-4">
+                            <img class="img-responsive rounded"
+                                style="width:100%;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/50_model_chatter_after.png" alt="After: Chatter is hidden on that model"/>
+                        </div>
+
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="ng-faq">
+                <div class="mb-3">
+                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f1">What does this module do?</div>
+                    <div id="f1" class="collapse ng-faq-a">It manages menus, models, fields, buttons, tabs, filters, domains and chatter access for selected users without coding.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f2">Can one rule apply to multiple users?</div>
+                    <div id="f2" class="collapse ng-faq-a">Yes. Add multiple users on the rule; all receive the same restrictions.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f3">Different from Odoo built-in rights?</div>
+                    <div id="f3" class="collapse ng-faq-a">Native groups mainly cover model ACL. This app adds UI-level and domain-level control from one form.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f4">Multi-company support?</div>
+                    <div id="f4" class="collapse ng-faq-a">Yes. Set Companies on the rule to scope restrictions.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f5">Filter/Group By not hiding?</div>
+                    <div id="f5" class="collapse ng-faq-a">Ensure Users are set, select the exact filter name, then logout/login the affected user.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f6">Which Odoo versions?</div>
+                    <div id="f6" class="collapse ng-faq-a">Odoo 19.0, 18.0, 17.0, Community, Enterprise and Odoo.sh.</div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="ng-support">
+                <div style="background:#fff; border-radius:16px; padding:24px; border:1px solid #e2e8f0; text-align:center;">
+                    <p style="font-size:18px; font-weight:700; margin-bottom:12px;">Need help?</p>
+                    <a href="mailto:next.gen.solutions2122@gmail.com" style="font-size:17px; color:#4f46e5; font-weight:700;">
+                        <i class="fa fa-envelope"></i> next.gen.solutions2122@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="mt-5">
+        <h2 class="ng-section-title">Our Services</h2>
+        <div class="ng-underline"></div>
+        <div class="row g-3 justify-content-center">
+            <div class="col-6 col-md-4 col-lg-2"><div class="ng-service"><i class="fa fa-code fa-2x" style="color:#4f46e5;"></i><p>Odoo Development</p></div></div>
+            <div class="col-6 col-md-4 col-lg-2"><div class="ng-service"><i class="fa fa-cogs fa-2x" style="color:#7c3aed;"></i><p>Odoo Customization</p></div></div>
+            <div class="col-6 col-md-4 col-lg-2"><div class="ng-service"><i class="fa fa-rocket fa-2x" style="color:#06b6d4;"></i><p>Odoo Implementation</p></div></div>
+            <div class="col-6 col-md-4 col-lg-2"><div class="ng-service"><i class="fa fa-exchange fa-2x" style="color:#4f46e5;"></i><p>Odoo Migration</p></div></div>
+            <div class="col-6 col-md-4 col-lg-2"><div class="ng-service"><i class="fa fa-plug fa-2x" style="color:#7c3aed;"></i><p>Odoo Integration</p></div></div>
+        </div>
+    </section>
+
+    <section class="mt-4 mb-2">
+        <div class="row justify-content-center g-3">
+            <div class="col-md-4">
+                <a class="ng-contact" href="https://wa.me/919099767168" target="_blank">
+                    <i class="fa fa-whatsapp fa-2x"></i> WhatsApp
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="ng-contact" href="mailto:next.gen.solutions2122@gmail.com">
+                    <i class="fa fa-envelope fa-2x"></i> Email
+                </a>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:22px; color:#64748b; font-size:13px;">
+            © NextGen · Access Rights Manager · Odoo 19
+        </p>
+    </section>
+</div>
+</body>
+</html>

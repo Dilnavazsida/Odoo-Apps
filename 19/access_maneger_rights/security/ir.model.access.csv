@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rights_manager_group,access.rights.manager group,model_access_rights_manager,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_menu_line_group,access.rights.menu.line group,model_access_rights_menu_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_model_line_group,access.rights.model.line group,model_access_rights_model_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_field_line_group,access.rights.field.line group,model_access_rights_field_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_button_line_group,access.rights.button.line group,model_access_rights_button_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_filter_line_group,access.rights.filter.line group,model_access_rights_filter_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_domain_line_group,access.rights.domain.line group,model_access_rights_domain_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_chatter_line_group,access.rights.chatter.line group,model_access_rights_chatter_line,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_view_element_group,access.rights.view.element group,model_access_rights_view_element,access_maneger_rights.group_access_rights_manager,1,1,1,1
+access_rights_view_element_user,access.rights.view.element user,model_access_rights_view_element,base.group_user,1,0,0,0

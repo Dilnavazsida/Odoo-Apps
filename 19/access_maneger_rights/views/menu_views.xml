@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_access_rights_manager_root"
+              name="Access Rights Manager"
+              web_icon="access_maneger_rights,static/description/icon.png"
+              groups="access_maneger_rights.group_access_rights_manager"
+              sequence="190"/>
+
+    <menuitem id="menu_access_rights_rules"
+              name="Access Rights Rules"
+              parent="menu_access_rights_manager_root"
+              action="action_access_rights_manager"
+              sequence="10"/>
+</odoo>
