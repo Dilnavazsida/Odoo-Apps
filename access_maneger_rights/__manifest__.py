@@ -20,7 +20,7 @@
             Make users read-only, disable developer mode, hide chatter, and control
             import/export/archive globally.
     """,
-    "author": "NextGen",
+    "author": "NextGen Services",
     "website": "https://nextgensolutions.infinityfreeapp.com/",
     "support": "next.gen.solutions2122@gmail.com",
     "depends": ["base", "web", "mail", "base_import"],
@@ -46,6 +46,6 @@
     "installable": True,
     "application": False,
     "currency": "EUR",
-    "price": 26.02,
+    "price": 25.88,
     "license": "OPL-1",
 }
