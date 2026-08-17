@@ -112,18 +112,18 @@
         .ng-shot-col h3, .ng-shot-col h5, .ng-shot-col p {
             text-align: left !important;
         }
-        .ng-tabs .nav-link {
-            border: none !important;
-            border-radius: 999px !important;
-            color: var(--ng-dark);
-            font-weight: 700;
-            padding: 10px 22px;
-            background: #e2e8f0;
-            margin: 0 6px;
+        .ng-tabs.nav-pills .nav-link {
+            border: none;
+            border-radius: 999px;
+            color: #0f172a;
+            font-weight: 800;
+            padding: 12px 22px;
+            background-color: #e2e8f0;
+            margin: 4px 6px;
         }
-        .ng-tabs .nav-link.active {
-            background: linear-gradient(90deg, var(--ng-primary), var(--ng-violet)) !important;
-            color: #fff !important;
+        .ng-tabs.nav-pills .nav-link.active {
+            background-color: #4f46e5;
+            color: #ffffff;
         }
         .ng-faq-q {
             background: #fff;
@@ -165,55 +165,101 @@
 <body>
 <div class="container" style="max-width:100% !important; width:100% !important; padding:0 0 40px 0 !important;">
 
-    <!-- HERO / BRAND (NextGen — different from Wan Buffer layout) -->
-    <section class="ng-hero">
-        <div class="row align-items-center mb-4">
-            <div class="col-md-7 d-flex align-items-center gap-3">
-                <img src="nextgen_logo.png" alt="NextGen" width="72" height="72"
-                     style="border-radius:50%; border:2px solid rgba(255,255,255,0.35);"/>
-                <div>
-                    <p class="ng-brand-name">NextGen</p>
-                    <p class="ng-tagline">Smart Odoo Solutions · Access · Security · Growth</p>
-                </div>
-            </div>
-            <div class="col-md-5 text-md-end mt-3 mt-md-0">
-                <img src="https://res.cloudinary.com/dghplu26l/image/upload/v1748932177/odoo_logo_medium_uknl2o.png"
-                     alt="Odoo" width="160" style="filter: brightness(0) invert(1); opacity: 0.95;"/>
-            </div>
-        </div>
+    <!-- HERO: App Store strips <style> + linear-gradient. Use table bgcolor + hero_bg.png. -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f172a" background="hero_bg.png"
+           style="width:100%; max-width:100%; background-color:#0f172a; background-image:url('hero_bg.png'); background-repeat:no-repeat; background-size:cover; background-position:center; color:#ffffff; border-radius:16px; margin-top:24px; overflow:hidden;">
+        <tr>
+            <td style="padding:36px 28px; color:#ffffff;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+            <tr>
+                <td width="72" valign="middle" style="width:72px; padding-right:14px;">
+                    <img src="nextgen_logo.png" alt="NextGen" width="72" height="72"
+                         style="width:72px !important; height:72px !important; max-width:72px !important; border-radius:50%; border:2px solid #94a3b8;"/>
+                </td>
+                <td valign="middle">
+                    <div style="font-size:28px; font-weight:800; color:#ffffff; letter-spacing:0.5px; margin:0;">NextGen</div>
+                    <div style="font-size:14px; color:#cbd5e1; margin:4px 0 0 0;">Smart Odoo Solutions &middot; Access &middot; Security &middot; Growth</div>
+                </td>
+                <td width="160" valign="middle" align="right" style="width:160px; text-align:right;">
+                    <img src="odoo_logo_white.png" alt="Odoo" width="160" height="50"
+                         style="width:160px !important; max-width:160px !important; height:auto !important;"/>
+                </td>
+            </tr>
+        </table>
 
-        <div class="row g-3 mb-4">
-            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Odoo Version</h6><p class="num">19.0</p></div></div>
-            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Setup</h6><p class="num" style="font-size:20px;">No Code</p></div></div>
-            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Access Rules</h6><p class="num" style="font-size:20px;">Per User</p></div></div>
-            <div class="col-6 col-md-3"><div class="ng-stat"><h6>Companies</h6><p class="num" style="font-size:20px;">Multi</p></div></div>
-        </div>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; margin:22px 0 8px 0; table-layout:fixed;">
+            <tr>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Odoo Version</div>
+                    <div style="font-size:26px; font-weight:800; color:#67e8f9; margin:0;">19.0</div>
+                    </div>
+                </td>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Setup</div>
+                    <div style="font-size:20px; font-weight:800; color:#67e8f9; margin:0;">No Code</div>
+                    </div>
+                </td>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Access Rules</div>
+                    <div style="font-size:20px; font-weight:800; color:#67e8f9; margin:0;">Per User</div>
+                    </div>
+                </td>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Companies</div>
+                    <div style="font-size:20px; font-weight:800; color:#67e8f9; margin:0;">Multi</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <a class="ng-cta" href="mailto:next.gen.solutions2122@gmail.com">
-                Demo / Support / Customization
-                <span>next.gen.solutions2122@gmail.com</span>
-            </a>
-            <div>
-                <span class="ng-chip"><i class="fa fa-check"></i> Community</span>
-                <span class="ng-chip"><i class="fa fa-check"></i> Enterprise</span>
-                <span class="ng-chip"><i class="fa fa-check"></i> Odoo.sh</span>
-            </div>
-        </div>
-    </section>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; margin-top:12px;">
+            <tr>
+                <td valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="#4f46e5" background="cta_bg.png" style="background-color:#4f46e5; border-radius:999px;">
+                        <tr>
+                            <td style="padding:12px 18px;">
+                                <a href="mailto:next.gen.solutions2122@gmail.com" style="color:#ffffff; font-weight:700; text-decoration:none; font-size:14px;">
+                                    Demo / Support / Customization
+                                    <span style="background-color:#ffffff; color:#0f172a; border-radius:999px; padding:4px 10px; margin-left:8px; font-size:12px; font-weight:700;">next.gen.solutions2122@gmail.com</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign="middle" align="right" style="text-align:right; white-space:nowrap;">
+                    <span style="display:inline-block; background-color:#ffffff; color:#0f172a; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; margin:4px;">&#10003; Community</span>
+                    <span style="display:inline-block; background-color:#ffffff; color:#0f172a; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; margin:4px;">&#10003; Enterprise</span>
+                    <span style="display:inline-block; background-color:#ffffff; color:#0f172a; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; margin:4px;">&#10003; Odoo.sh</span>
+                </td>
+            </tr>
+        </table>
+            </td>
+        </tr>
+    </table>
 
     <!-- MODULE INTRO / DESCRIPTION -->
     <section class="mt-5">
-        <h2 class="ng-section-title">Access Rights Manager - Hide Menu, Field &amp; Button</h2>
-        <div class="ng-underline"></div>
-        <div style="background:#fff; border-radius:18px; border:1px solid #e2e8f0; padding:28px 26px; box-shadow:0 8px 24px rgba(15,23,42,0.05);">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Access Rights Manager - Hide Menu, Field &amp; Button</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+        <div class="shadow-sm" style="background-color:#ffffff; border-radius:18px; border:1px solid #e2e8f0; padding:28px 26px;">
             <h3 style="margin:0 0 12px 0; font-size:20px; font-weight:800; color:#0f172a; text-align:center;">
-                Complete User Access Control for Odoo — Without Coding
+                Complete User Access Control for Odoo &mdash; Without Coding
             </h3>
             <p style="text-align:center; font-size:16px; color:#475569; max-width:880px; margin:0 auto 18px auto; line-height:1.7;">
                 <strong>Access Rights Manager</strong> helps you manage who can see and do what inside Odoo.
                 Create simple rules, assign users and companies, then control menus, models, fields, buttons,
-                tabs, filters, group by, reports, actions, domains and chatter — all from one centralized app.
+                tabs, filters, group by, reports, actions, domains and chatter &mdash; all from one centralized app.
             </p>
             <p style="text-align:center; font-size:15px; color:#64748b; max-width:880px; margin:0 auto 20px auto; line-height:1.7;">
                 Perfect for businesses that need role-based restrictions for sales, warehouse, accounts or
@@ -222,7 +268,7 @@
 
             <div class="row g-3 mt-1">
                 <div class="col-md-4">
-                    <div style="background:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                    <div style="background-color:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
                         <div style="font-weight:800; color:#4f46e5; margin-bottom:6px;">Why this app?</div>
                         <div style="font-size:14px; color:#475569; line-height:1.6;">
                             Native Odoo access rights are powerful but technical. This app gives admins a clear UI
@@ -231,7 +277,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div style="background:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                    <div style="background-color:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
                         <div style="font-weight:800; color:#7c3aed; margin-bottom:6px;">Who is it for?</div>
                         <div style="font-size:14px; color:#475569; line-height:1.6;">
                             Odoo admins, implementation partners and companies that need per-user visibility
@@ -240,7 +286,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div style="background:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                    <div style="background-color:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
                         <div style="font-weight:800; color:#06b6d4; margin-bottom:6px;">What you get</div>
                         <div style="font-size:14px; color:#475569; line-height:1.6;">
                             Global flags, menu/field/button/tab hiding, filter &amp; group-by control,
@@ -252,83 +298,167 @@
         </div>
     </section>
 
-    <!-- FEATURES — left-border cards (not Wan Buffer boxed icon style) -->
-    <section class="mt-5">
-        <h2 class="ng-section-title">Features</h2>
-        <div class="ng-underline"></div>
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/01_global.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Global Read-Only, Disable Import/Export/Delete/Archive, Hide Chatter, Disable Developer Mode.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/02_menu.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Hide any menu or sub-menu for selected users.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/03_model.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Model access: Create, Edit, Delete, Duplicate, Import, Export, Archive + hide Reports &amp; Actions.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/04_field.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Field access: Invisible, Read-Only, Required, Remove External Link.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/05_button.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Hide Buttons and Tabs/Pages with auto suggestions from views.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/06_filter.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Hide Filters and Group By options from the search panel.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/07_domain.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Domain / record access so users only see relevant records.</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ng-feature d-flex align-items-center">
-                    <img class="ng-fico" src="features/08_chatter.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;margin-right:12px;"/>
-                    <span style="font-weight:700;">Hide Chatter globally or per model. Multi-company rules supported.</span>
-                </div>
-            </div>
-        </div>
+    <!-- Tabs: <a> + data-toggle (App Store strips <button>). Setup is default: Features + screenshots. -->
+    <ul class="nav nav-pills ng-tabs justify-content-center flex-wrap" role="tablist" style="max-width:760px; margin:36px auto 12px auto;">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="ng-setup-tab" href="#ng-setup" data-toggle="tab" data-bs-toggle="tab" data-target="#ng-setup" data-bs-target="#ng-setup" role="tab" aria-controls="ng-setup" aria-selected="true">Setup</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="ng-faq-tab" href="#ng-faq" data-toggle="tab" data-bs-toggle="tab" data-target="#ng-faq" data-bs-target="#ng-faq" role="tab" aria-controls="ng-faq" aria-selected="false">FAQs</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="ng-support-tab" href="#ng-support" data-toggle="tab" data-bs-toggle="tab" data-target="#ng-support" data-bs-target="#ng-support" role="tab" aria-controls="ng-support" aria-selected="false">Support</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+    <div class="tab-pane active" id="ng-setup" role="tabpanel" aria-labelledby="ng-setup-tab">
+
+    <!-- FEATURES shown with Setup screenshots -->
+    <section style="background-color:#f1f5f9; padding:24px 12px; border-radius:16px;">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Features</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f1f5f9"
+               style="width:100%; background-color:#f1f5f9; border-collapse:separate; border-spacing:12px;">
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/01_global.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Global Read-Only, Disable Import/Export/Delete/Archive, Hide Chatter, Disable Developer Mode.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/02_menu.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide any menu or sub-menu for selected users.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/03_model.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Model access: Create, Edit, Delete, Duplicate, Import, Export, Archive + hide Reports &amp; Actions.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/04_field.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Field access: Invisible, Read-Only, Required, Remove External Link.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/05_button.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide Buttons and Tabs/Pages with auto suggestions from views.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/06_filter.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide Filters and Group By options from the search panel.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/07_domain.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Domain / record access so users only see relevant records.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/08_chatter.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide Chatter globally or per model. Multi-company rules supported.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
     </section>
 
-    <!-- TABS -->
-    <section class="mt-5">
-        <ul class="nav nav-pills justify-content-center ng-tabs mb-4" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#ng-setup" type="button">Setup</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ng-faq" type="button">FAQs</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ng-support" type="button">Support</button>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="ng-setup">
+    <!-- SETUP screenshots -->
+    <section class="mt-4">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Setup</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
                 <table width="75%" align="center" cellpadding="0" cellspacing="0" border="0" style="width:75%;max-width:75%;margin:0 auto;border-collapse:collapse;">
                 <tr>
                 <td class="ng-shot-col" valign="top" align="left" style="width:100%;text-align:left;background:#fff;border-radius:16px;padding:12px 8px 16px 8px;border:1px solid #e2e8f0;">
                         <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
                             <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;"> Install the module from Apps</h5>
-                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Search “Access Rights Manager” and click Activate.</p>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Search &quot;Access Rights Manager&quot; and click Activate.</p>
                             <img class="img-responsive rounded ng-shot"
                                 width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
                                 src="screenshot/01_install.png" alt="1. Install the module from Apps"/>
@@ -337,7 +467,7 @@
 
                         <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
                             <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;"> Enable Access Rights Manager on the user</h5>
-                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Settings → Users → Extra Rights → check Access Rights Manager.</p>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Settings &rarr; Users &rarr; Extra Rights &rarr; check Access Rights Manager.</p>
                             <img class="img-responsive rounded ng-shot"
                                 width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
                                 src="screenshot/02_enable_group.png" alt="2. Enable Access Rights Manager on the user"/>
@@ -815,48 +945,94 @@
                 </td>
                 </tr>
                 </table>
-            </div>
-            <div class="tab-pane fade" id="ng-faq">
+    </section>
+    </div>
+
+    <div class="tab-pane" id="ng-faq" role="tabpanel" aria-labelledby="ng-faq-tab">
+    <section class="mt-4">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">FAQs</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
                 <div class="mb-3">
-                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f1">What does this module do?</div>
-                    <div id="f1" class="collapse ng-faq-a">It manages menus, models, fields, buttons, tabs, filters, domains and chatter access for selected users without coding.</div>
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">What does this module do?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">It manages menus, models, fields, buttons, tabs, filters, domains and chatter access for selected users without coding.</div>
                 </div>
                 <div class="mb-3">
-                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f2">Can one rule apply to multiple users?</div>
-                    <div id="f2" class="collapse ng-faq-a">Yes. Add multiple users on the rule; all receive the same restrictions.</div>
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Can one rule apply to multiple users?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Yes. Add multiple users on the rule; all receive the same restrictions.</div>
                 </div>
                 <div class="mb-3">
-                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f3">Different from Odoo built-in rights?</div>
-                    <div id="f3" class="collapse ng-faq-a">Native groups mainly cover model ACL. This app adds UI-level and domain-level control from one form.</div>
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Different from Odoo built-in rights?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Native groups mainly cover model ACL. This app adds UI-level and domain-level control from one form.</div>
                 </div>
                 <div class="mb-3">
-                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f4">Multi-company support?</div>
-                    <div id="f4" class="collapse ng-faq-a">Yes. Set Companies on the rule to scope restrictions.</div>
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Multi-company support?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Yes. Set Companies on the rule to scope restrictions.</div>
                 </div>
                 <div class="mb-3">
-                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f5">Filter/Group By not hiding?</div>
-                    <div id="f5" class="collapse ng-faq-a">Ensure Users are set, select the exact filter name, then logout/login the affected user.</div>
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Filter/Group By not hiding?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Ensure Users are set, select the exact filter name, then logout/login the affected user.</div>
                 </div>
                 <div class="mb-3">
-                    <div class="ng-faq-q" data-bs-toggle="collapse" data-bs-target="#f6">Which Odoo versions?</div>
-                    <div id="f6" class="collapse ng-faq-a">Odoo 19.0, 18.0, 17.0, Community, Enterprise and Odoo.sh.</div>
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Which Odoo versions?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Odoo 19.0, 18.0, 17.0, Community, Enterprise and Odoo.sh.</div>
                 </div>
-            </div>
-            <div class="tab-pane fade" id="ng-support">
+    </section>
+    </div>
+
+    <div class="tab-pane" id="ng-support" role="tabpanel" aria-labelledby="ng-support-tab">
+    <section class="mt-4">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Support</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
                 <div style="background:#fff; border-radius:16px; padding:24px; border:1px solid #e2e8f0; text-align:center;">
                     <p style="font-size:18px; font-weight:700; margin-bottom:12px;">Need help?</p>
-                    <a href="mailto:next.gen.solutions2122@gmail.com" style="font-size:17px; color:#4f46e5; font-weight:700;">
-                        <i class="fa fa-envelope"></i> next.gen.solutions2122@gmail.com
-                    </a>
+                    <p style="margin:0 0 10px 0; font-weight:700;">
+                        <a href="mailto:next.gen.solutions2122@gmail.com" style="font-size:17px; color:#4f46e5; font-weight:700;">
+                            <i class="fa fa-envelope"></i> next.gen.solutions2122@gmail.com
+                        </a>
+                    </p>
+                    <p style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">
+                        WhatsApp:
+                        <a href="https://wa.me/919099767168" target="_blank" rel="noopener noreferrer"
+                           style="color:#4f46e5; font-weight:800; text-decoration:underline;">
+                            +91 90997 67168
+                        </a>
+                    </p>
+                    <p style="margin:8px 0 0 0; font-size:13px;">
+                        <a href="https://wa.me/919099767168" target="_blank" rel="noopener noreferrer"
+                           style="color:#4f46e5; font-weight:600; word-break:break-all; text-decoration:underline;">
+                            https://wa.me/919099767168
+                        </a>
+                    </p>
                 </div>
-            </div>
-        </div>
     </section>
+    </div>
+    </div>
 
     <!-- SERVICES (table layout so App Store CSS does not collapse the grid) -->
     <section class="mt-5">
-        <h2 class="ng-section-title">Our Services</h2>
-        <div class="ng-underline"></div>
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Our Services</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
         <table width="100%" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:separate;border-spacing:10px;">
             <tr>
                 <td width="20%" valign="top" style="width:20%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 8px;text-align:center;">
@@ -886,11 +1062,14 @@
     <section class="mt-4 mb-2">
         <table width="100%" cellpadding="0" cellspacing="0" style="width:100%;max-width:720px;margin:8px auto 0 auto;border-collapse:separate;border-spacing:16px;">
             <tr>
-                <td width="50%" style="width:50%;background:#fff;border:2px solid #0f172a;border-radius:14px;padding:0;">
-                    <a href="https://wa.me/919099767168" target="_blank" rel="noopener"
-                       style="display:block;padding:16px 12px;text-align:center;font-weight:800;color:#0f172a;text-decoration:none;font-size:16px;">
+                <td width="50%" style="width:50%;background:#fff;border:2px solid #0f172a;border-radius:14px;padding:16px 12px;text-align:center;vertical-align:middle;">
+                    <div style="font-weight:800;font-size:16px;color:#0f172a;margin-bottom:6px;">
                         <i class="fa fa-whatsapp" style="margin-right:8px;font-size:20px;"></i>WhatsApp
-                    </a>
+                    </div>
+                    <div style="font-size:15px;font-weight:700;color:#0f172a;">+91 90997 67168</div>
+                    <div style="margin-top:8px;font-size:13px;font-weight:600;color:#4f46e5;word-break:break-all;">
+                        https://wa.me/919099767168
+                    </div>
                 </td>
                 <td width="50%" style="width:50%;background:#fff;border:2px solid #0f172a;border-radius:14px;padding:0;">
                     <a href="mailto:next.gen.solutions2122@gmail.com"
