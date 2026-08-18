@@ -1,0 +1,27 @@
+/* Hide Settings → Developer Tools when Disable Developer Mode is on. */
+html.arm-no-debug #developer_tool {
+    display: none !important;
+}
+
+/* Odoo 17 pins boolean list columns to 70px, which clips headers to "Hide ...". */
+.o_arm_x2many_tree .o_list_table thead th {
+    max-width: none !important;
+}
+.o_arm_x2many_tree .o_list_table thead th .text-truncate {
+    overflow: visible;
+    text-overflow: unset;
+    white-space: nowrap;
+}
+
+/* Access Rights Manager — home menu caption (full name on 2 lines) */
+.o_home_menu .o_app[data-menu-xmlid="access_maneger_rights.menu_access_rights_manager_root"] .o_caption {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: unset;
+    line-height: 1.2;
+    max-height: 2.5em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 0.8rem;
+}
