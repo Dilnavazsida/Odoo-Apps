@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_access_rights_manager_list" model="ir.ui.view">
+        <field name="name">access.rights.manager.list</field>
+        <field name="model">access.rights.manager</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="user_ids" widget="many2many_tags"/>
+                <field name="company_ids" widget="many2many_tags" groups="base.group_multi_company"/>
+                <field name="is_readonly"/>
+                <field name="disable_export"/>
+                <field name="disable_import"/>
+                <field name="disable_delete"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_access_rights_manager_form" model="ir.ui.view">
+        <field name="name">access.rights.manager.form</field>
+        <field name="model">access.rights.manager</field>
+        <field name="arch" type="xml">
+            <form string="Access Rights Manager">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="company_ids" widget="many2many_tags" options="{'no_create': True}" groups="base.group_multi_company"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_readonly"/>
+                            <field name="disable_import"/>
+                            <field name="disable_delete"/>
+                            <field name="disable_developer_mode"/>
+                        </group>
+                        <group>
+                            <field name="disable_export"/>
+                            <field name="disable_archive"/>
+                            <field name="hide_chatter"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Hide Menu" name="hide_menu">
+                            <field name="menu_line_ids">
+                                <list editable="bottom">
+                                    <field name="menu_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Model/Report/Action Access" name="model_access">
+                            <field name="model_line_ids">
+                                <list editable="bottom">
+                                    <field name="model_id"/>
+                                    <field name="model_name" column_invisible="1"/>
+                                    <field name="hide_report_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="hide_action_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="hide_create"/>
+                                    <field name="hide_edit"/>
+                                    <field name="hide_delete"/>
+                                    <field name="hide_duplicate"/>
+                                    <field name="hide_import"/>
+                                    <field name="hide_export"/>
+                                    <field name="hide_archive"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Field Access" name="field_access">
+                            <field name="field_line_ids">
+                                <list editable="bottom">
+                                    <field name="model_id"/>
+                                    <field name="field_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="invisible"/>
+                                    <field name="readonly"/>
+                                    <field name="required"/>
+                                    <field name="remove_external_link"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Button/Tab Access" name="button_access">
+                            <field name="button_line_ids">
+                                <list editable="bottom">
+                                    <field name="model_id"/>
+                                    <field name="hide_button_ids" widget="many2many_tags"
+                                           options="{'no_create': True, 'no_open': True}"
+                                           placeholder="Confirm"/>
+                                    <field name="hide_page_ids" widget="many2many_tags"
+                                           options="{'no_create': True, 'no_open': True}"
+                                           placeholder="Other Info"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Filter / Group By" name="filter_access">
+                            <field name="filter_line_ids">
+                                <list editable="bottom">
+                                    <field name="model_id"/>
+                                    <field name="hide_filter_ids" widget="many2many_tags"
+                                           options="{'no_create': True, 'no_open': True}"
+                                           placeholder="Quotations"/>
+                                    <field name="hide_groupby_ids" widget="many2many_tags"
+                                           options="{'no_create': True, 'no_open': True}"
+                                           placeholder="Salesperson"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Domain Access" name="domain_access">
+                            <field name="domain_line_ids">
+                                <list editable="bottom">
+                                    <field name="model_id"/>
+                                    <field name="model_technical_name"/>
+                                    <field name="domain" widget="arm_domain" options="{'model': 'model_technical_name'}"/>
+                                </list>
+                                <form>
+                                    <group>
+                                        <field name="model_id"/>
+                                        <field name="model_technical_name"/>
+                                        <field name="domain" widget="arm_domain" options="{'model': 'model_technical_name'}"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Hide Chatter" name="hide_chatter_page">
+                            <field name="chatter_line_ids">
+                                <list editable="bottom">
+                                    <field name="model_id"/>
+                                    <field name="hide_chatter"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_access_rights_manager_search" model="ir.ui.view">
+        <field name="name">access.rights.manager.search</field>
+        <field name="model">access.rights.manager</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="user_ids"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_access_rights_manager" model="ir.actions.act_window">
+        <field name="name">Access Rights Manager</field>
+        <field name="res_model">access.rights.manager</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Access Rights Manager - Hide Menu, Field &amp; Button | NextGen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --ng-primary: #4f46e5;
+            --ng-accent: #06b6d4;
+            --ng-violet: #7c3aed;
+            --ng-dark: #0f172a;
+            --ng-muted: #64748b;
+            --ng-card: #ffffff;
+            --ng-bg: #f1f5f9;
+        }
+        body { background: var(--ng-bg); color: var(--ng-dark); font-family: Arial, Helvetica, sans-serif; }
+        .ng-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 45%, #0e7490 100%);
+            border-radius: 24px;
+            padding: 36px 28px;
+            color: #fff;
+            margin-top: 24px;
+        }
+        .ng-brand-name { font-size: 28px; font-weight: 800; letter-spacing: 0.5px; margin: 0; }
+        .ng-tagline { opacity: 0.85; font-size: 14px; margin: 4px 0 0 0; }
+        .ng-stat {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 18px 16px;
+            height: 100%;
+            backdrop-filter: blur(4px);
+        }
+        .ng-stat h6 { font-size: 13px; opacity: 0.85; margin: 0 0 6px 0; font-weight: 600; }
+        .ng-stat .num { font-size: 26px; font-weight: 800; margin: 0; color: #67e8f9; }
+        .ng-chip {
+            display: inline-block;
+            background: #fff;
+            color: var(--ng-dark);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 700;
+            font-size: 13px;
+            margin: 4px;
+        }
+        .ng-cta {
+            background: linear-gradient(90deg, var(--ng-accent), var(--ng-violet));
+            color: #fff !important;
+            border-radius: 999px;
+            padding: 12px 22px;
+            text-decoration: none !important;
+            display: inline-block;
+            font-weight: 700;
+        }
+        .ng-cta span {
+            background: #fff;
+            color: var(--ng-dark);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-left: 8px;
+            font-size: 12px;
+        }
+        .ng-section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--ng-dark);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .ng-underline {
+            width: 90px; height: 4px; margin: 0 auto 28px auto; border-radius: 4px;
+            background: linear-gradient(90deg, var(--ng-accent), var(--ng-violet));
+        }
+        /* App Store forces img { width:100% } — pin feature icons with !important */
+        .ng-feature {
+            background: var(--ng-card);
+            border-radius: 16px;
+            border-left: 5px solid var(--ng-primary);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            padding: 14px 16px;
+            height: 100%;
+        }
+        .ng-feature img,
+        img.ng-fico {
+            width: 32px !important;
+            height: 32px !important;
+            max-width: 32px !important;
+            max-height: 32px !important;
+            margin-right: 12px !important;
+            flex-shrink: 0;
+        }
+        img.ng-shot {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            float: none !important;
+            clear: both !important;
+            margin: 0 0 8px 0 !important;
+        }
+        .ng-shot-wrap {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 0 22px 0 !important;
+            text-align: left !important;
+            overflow: hidden;
+            clear: both;
+        }
+        .ng-shot-col h3, .ng-shot-col h5, .ng-shot-col p {
+            text-align: left !important;
+        }
+        .ng-tabs.nav-pills .nav-link {
+            border: none;
+            border-radius: 999px;
+            color: #0f172a;
+            font-weight: 800;
+            padding: 12px 22px;
+            background-color: #e2e8f0;
+            margin: 4px 6px;
+        }
+        .ng-tabs.nav-pills .nav-link.active {
+            background-color: #4f46e5;
+            color: #ffffff;
+        }
+        .ng-faq-q {
+            background: #fff;
+            border-radius: 12px;
+            padding: 14px 18px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--ng-dark);
+            border: 1px solid #e2e8f0;
+        }
+        .ng-faq-a {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: 12px 18px;
+            color: var(--ng-muted);
+        }
+        .ng-service {
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px 16px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 18px rgba(15,23,42,0.05);
+            transition: transform .15s ease;
+        }
+        .ng-service:hover { transform: translateY(-3px); border-color: #a5b4fc; }
+        .ng-service p { margin: 10px 0 0 0; font-weight: 800; color: var(--ng-dark); }
+        .ng-contact {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: #fff; border: 2px solid var(--ng-dark); border-radius: 14px;
+            padding: 14px; font-weight: 800; color: var(--ng-dark); text-decoration: none !important;
+        }
+        .ng-contact:hover { background: var(--ng-dark); color: #fff !important; }
+    </style>
+</head>
+<body>
+<div class="container" style="max-width:100% !important; width:100% !important; padding:0 0 40px 0 !important;">
+
+    <!-- HERO: App Store strips <style> + linear-gradient. Use table bgcolor + hero_bg.png. -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f172a" background="hero_bg.png"
+           style="width:100%; max-width:100%; background-color:#0f172a; background-image:url('hero_bg.png'); background-repeat:no-repeat; background-size:cover; background-position:center; color:#ffffff; border-radius:16px; margin-top:24px; overflow:hidden;">
+        <tr>
+            <td style="padding:36px 28px; color:#ffffff;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+            <tr>
+                <td width="72" valign="middle" style="width:72px; padding-right:14px;">
+                    <img src="nextgen_logo.png" alt="NextGen" width="72" height="72"
+                         style="width:72px !important; height:72px !important; max-width:72px !important; border-radius:50%; border:2px solid #94a3b8;"/>
+                </td>
+                <td valign="middle">
+                    <div style="font-size:28px; font-weight:800; color:#ffffff; letter-spacing:0.5px; margin:0;">NextGen</div>
+                    <div style="font-size:14px; color:#cbd5e1; margin:4px 0 0 0;">Smart Odoo Solutions &middot; Access &middot; Security &middot; Growth</div>
+                </td>
+                <td width="160" valign="middle" align="right" style="width:160px; text-align:right;">
+                    <img src="odoo_logo_white.png" alt="Odoo" width="160" height="50"
+                         style="width:160px !important; max-width:160px !important; height:auto !important;"/>
+                </td>
+            </tr>
+        </table>
+
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; margin:22px 0 8px 0; table-layout:fixed;">
+            <tr>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Odoo Version</div>
+                    <div style="font-size:26px; font-weight:800; color:#67e8f9; margin:0;">18.0</div>
+                    </div>
+                </td>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Setup</div>
+                    <div style="font-size:20px; font-weight:800; color:#67e8f9; margin:0;">No Code</div>
+                    </div>
+                </td>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Access Rules</div>
+                    <div style="font-size:20px; font-weight:800; color:#67e8f9; margin:0;">Per User</div>
+                    </div>
+                </td>
+                <td width="25%" valign="top" style="width:25%; padding:5px;">
+                    <div style="background-color:#1e293b; border:1px solid #334155; border-radius:16px; padding:18px 16px;">
+                    <div style="font-size:13px; color:#cbd5e1; font-weight:600; margin:0 0 6px 0;">Companies</div>
+                    <div style="font-size:20px; font-weight:800; color:#67e8f9; margin:0;">Multi</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; margin-top:12px;">
+            <tr>
+                <td valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="#4f46e5" background="cta_bg.png" style="background-color:#4f46e5; border-radius:999px;">
+                        <tr>
+                            <td style="padding:12px 18px;">
+                                <a href="mailto:next.gen.solutions2122@gmail.com" style="color:#ffffff; font-weight:700; text-decoration:none; font-size:14px;">
+                                    Demo / Support / Customization
+                                    <span style="background-color:#ffffff; color:#0f172a; border-radius:999px; padding:4px 10px; margin-left:8px; font-size:12px; font-weight:700;">next.gen.solutions2122@gmail.com</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign="middle" align="right" style="text-align:right; white-space:nowrap;">
+                    <span style="display:inline-block; background-color:#ffffff; color:#0f172a; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; margin:4px;">&#10003; Community</span>
+                    <span style="display:inline-block; background-color:#ffffff; color:#0f172a; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; margin:4px;">&#10003; Enterprise</span>
+                    <span style="display:inline-block; background-color:#ffffff; color:#0f172a; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; margin:4px;">&#10003; Odoo.sh</span>
+                </td>
+            </tr>
+        </table>
+            </td>
+        </tr>
+    </table>
+
+    <!-- MODULE INTRO / DESCRIPTION -->
+    <section class="mt-5">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Access Rights Manager - Hide Menu, Field &amp; Button</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+        <div class="shadow-sm" style="background-color:#ffffff; border-radius:18px; border:1px solid #e2e8f0; padding:28px 26px;">
+            <h3 style="margin:0 0 12px 0; font-size:20px; font-weight:800; color:#0f172a; text-align:center;">
+                Complete User Access Control for Odoo &mdash; Without Coding
+            </h3>
+            <p style="text-align:center; font-size:16px; color:#475569; max-width:880px; margin:0 auto 18px auto; line-height:1.7;">
+                <strong>Access Rights Manager</strong> helps you manage who can see and do what inside Odoo.
+                Create simple rules, assign users and companies, then control menus, models, fields, buttons,
+                tabs, filters, group by, reports, actions, domains and chatter &mdash; all from one centralized app.
+            </p>
+            <p style="text-align:center; font-size:15px; color:#64748b; max-width:880px; margin:0 auto 20px auto; line-height:1.7;">
+                Perfect for businesses that need role-based restrictions for sales, warehouse, accounts or
+                support teams, without creating complex security groups or writing XML / Python code.
+            </p>
+
+            <div class="row g-3 mt-1">
+                <div class="col-md-4">
+                    <div style="background-color:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                        <div style="font-weight:800; color:#4f46e5; margin-bottom:6px;">Why this app?</div>
+                        <div style="font-size:14px; color:#475569; line-height:1.6;">
+                            Native Odoo access rights are powerful but technical. This app gives admins a clear UI
+                            to apply day-to-day restrictions quickly and safely.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background-color:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                        <div style="font-weight:800; color:#7c3aed; margin-bottom:6px;">Who is it for?</div>
+                        <div style="font-size:14px; color:#475569; line-height:1.6;">
+                            Odoo admins, implementation partners and companies that need per-user visibility
+                            control across Sales, Inventory, Accounting and more.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background-color:#f8fafc; border-radius:14px; padding:16px; height:100%; border:1px solid #e2e8f0;">
+                        <div style="font-weight:800; color:#06b6d4; margin-bottom:6px;">What you get</div>
+                        <div style="font-size:14px; color:#475569; line-height:1.6;">
+                            Global flags, menu/field/button/tab hiding, filter &amp; group-by control,
+                            domain-based record limits, chatter control and multi-company support.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs: <a> + data-toggle (App Store strips <button>). Setup is default: Features + screenshots. -->
+    <ul class="nav nav-pills ng-tabs justify-content-center flex-wrap" role="tablist" style="max-width:760px; margin:36px auto 12px auto;">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="ng-setup-tab" href="#ng-setup" data-toggle="tab" data-bs-toggle="tab" data-target="#ng-setup" data-bs-target="#ng-setup" role="tab" aria-controls="ng-setup" aria-selected="true">Setup</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="ng-faq-tab" href="#ng-faq" data-toggle="tab" data-bs-toggle="tab" data-target="#ng-faq" data-bs-target="#ng-faq" role="tab" aria-controls="ng-faq" aria-selected="false">FAQs</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="ng-support-tab" href="#ng-support" data-toggle="tab" data-bs-toggle="tab" data-target="#ng-support" data-bs-target="#ng-support" role="tab" aria-controls="ng-support" aria-selected="false">Support</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+    <div class="tab-pane active" id="ng-setup" role="tabpanel" aria-labelledby="ng-setup-tab">
+
+    <!-- FEATURES shown with Setup screenshots -->
+    <section style="background-color:#f1f5f9; padding:24px 12px; border-radius:16px;">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Features</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f1f5f9"
+               style="width:100%; background-color:#f1f5f9; border-collapse:separate; border-spacing:12px;">
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/01_global.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Global Read-Only, Disable Import/Export/Delete/Archive, Hide Chatter, Disable Developer Mode.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/02_menu.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide any menu or sub-menu for selected users.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/03_model.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Model access: Create, Edit, Delete, Duplicate, Import, Export, Archive + hide Reports &amp; Actions.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/04_field.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Field access: Invisible, Read-Only, Required, Remove External Link.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/05_button.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide Buttons and Tabs/Pages with auto suggestions from views.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/06_filter.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide Filters and Group By options from the search panel.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/07_domain.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Domain / record access so users only see relevant records.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" valign="top" bgcolor="#ffffff" style="width:50%; background-color:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:0;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                        <tr>
+                            <td width="6" bgcolor="#4f46e5" style="width:6px; background-color:#4f46e5; font-size:1px; line-height:1px;">&nbsp;</td>
+                            <td width="44" valign="middle" style="width:44px; padding:14px 8px 14px 12px;">
+                                <img src="features/08_chatter.png" alt="" width="32" height="32" style="width:32px !important;height:32px !important;max-width:32px !important;max-height:32px !important;display:block;"/>
+                            </td>
+                            <td valign="middle" style="padding:14px 16px 14px 0; font-weight:700; color:#0f172a; font-size:14px;">
+                                Hide Chatter globally or per model. Multi-company rules supported.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- SETUP screenshots -->
+    <section class="mt-4">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Setup</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+                <table width="75%" align="center" cellpadding="0" cellspacing="0" border="0" style="width:75%;max-width:75%;margin:0 auto;border-collapse:collapse;">
+                <tr>
+                <td class="ng-shot-col" valign="top" align="left" style="width:100%;text-align:left;background:#fff;border-radius:16px;padding:12px 8px 16px 8px;border:1px solid #e2e8f0;">
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;"> Install the module from Apps</h5>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Search &quot;Access Rights Manager&quot; and click Activate.</p>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/01_install.png" alt="1. Install the module from Apps"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;"> Enable Access Rights Manager on the user</h5>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Settings &rarr; Users &rarr; Extra Rights &rarr; check Access Rights Manager.</p>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/02_enable_group.png" alt="2. Enable Access Rights Manager on the user"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;"> Open Access Rights Manager from the home apps</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/03_app_home.png" alt="3. Open Access Rights Manager from the home apps"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Read-Only Global Access</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Configure read-only rules so selected users can view records but cannot create or edit them.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Read-Only on the rule</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/04_readonly_config.png" alt="Configuration: enable Read-Only on the rule"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: New / create actions are removed for that user</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/05_readonly_after.png" alt="After: New / create actions are removed for that user"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Export Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Prevent selected users from exporting records from list views.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Export is available in Actions</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/06_export_before.png" alt="Before: Export is available in Actions"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Disable Export</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/07_export_config.png" alt="Configuration: enable Disable Export"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Export is removed from Actions</h5>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Selected users no longer see Export in the Actions menu.</p>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/08_export_after.png" alt="After: Export is removed from Actions"/>
+                        </div>
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Import Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide import options so users cannot upload external data into the system.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Import records is available</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/09_import_before.png" alt="Before: Import records is available"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Disable Import</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/10_import_config.png" alt="Configuration: enable Disable Import"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Import records is hidden from the settings menu</h5>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Users can no longer import records from the list view settings menu.</p>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/12_import_after.png" alt="After: Import records is hidden from the cog menu"/>
+                        </div>
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Archive / Unarchive Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Remove Archive and Unarchive from the Actions menu for selected users.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Archive / Unarchive are available</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/12_archive_before.png" alt="Before: Archive / Unarchive are available"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Disable Archive/Unarchive</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/13_archive_config.png" alt="Configuration: enable Disable Archive/Unarchive"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Archive / Unarchive are removed from Actions</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/14_archive_after.png" alt="After: Archive / Unarchive are removed from Actions"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Delete Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide delete so users cannot remove records from list or form actions.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Delete is available in Actions</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/15_delete_before.png" alt="Before: Delete is available in Actions"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before (Sales): Delete is available in Actions</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/08_delete_before_sales.png" alt="Before (Sales): Delete is available in Actions"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Disable Delete</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/16_delete_config.png" alt="Configuration: enable Disable Delete"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Delete is no longer shown in Actions</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/17_delete_after.png" alt="After: Delete is no longer shown in Actions"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Chatter Global</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Remove the chatter panel from forms for selected users.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Chatter is visible on the form</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/18_chatter_before.png" alt="Before: Chatter is visible on the form"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Hide Chatter</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/19_chatter_config.png" alt="Configuration: enable Hide Chatter"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Chatter panel is hidden</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/20_chatter_after.png" alt="After: Chatter panel is hidden"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Disable Developer (Debug) Mode</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Restrict developer / debug mode so users cannot inspect technical field metadata.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Debug field info is available</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/21_debug_before.png" alt="Before: Debug field info is available"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: enable Disable Developer Mode</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/22_debug_config.png" alt="Configuration: enable Disable Developer Mode"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Developer / debug field info is blocked</h5>
+                            <p style="color:#64748b;font-size:15px;margin:8px 0 16px 0;text-align:left;">Affected users no longer get technical field tooltips or developer mode access.</p>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/23_debug_after.png" alt="After: Developer / debug field info is blocked"/>
+                        </div>
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Menu &amp; Sub-menu</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide specific menus or submenus so users only see what they need.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Quotations and Orders menus are visible</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/24_menu_before.png" alt="Before: Quotations and Orders menus are visible"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: add menus under Hide Menu</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/25_menu_config.png" alt="Configuration: add menus under Hide Menu"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: hidden menus no longer appear in navigation</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/26_menu_after.png" alt="After: hidden menus no longer appear in navigation"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Model Reports</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Control visibility of model-specific print reports (PDF Quote, Quotation / Order, etc.).</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Print reports are visible</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/27_report_before.png" alt="Before: Print reports are visible"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: select reports under Hide Reports</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/28_report_config.png" alt="Configuration: select reports under Hide Reports"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Print reports are removed from the menu</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/29_report_after.png" alt="After: Print reports are removed from the menu"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Hide Model Actions</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide specific server / contextual actions (Send email, Share, etc.) for selected users.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: actions are visible in the cog menu</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/30_action_before.png" alt="Before: actions are visible in the cog menu"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: select actions under Hide Actions</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/31_action_config.png" alt="Configuration: select actions under Hide Actions"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: selected actions are hidden</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/32_action_after.png" alt="After: selected actions are hidden"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Model Access Management</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Per model: hide create, edit, delete, duplicate, import, export, archive, plus reports and actions.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: New, Export and Delete are available</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/33_model_before.png" alt="Before: New, Export and Delete are available"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: Hide Create / Delete / Export on Sales Order</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/34_model_config.png" alt="Configuration: Hide Create / Delete / Export on Sales Order"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: restricted actions are removed for that model</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/35_model_after.png" alt="After: restricted actions are removed for that model"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Field Access Rights</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Make fields invisible, read-only, or required. Protect sensitive data on forms and lists.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: fields such as Payment Terms and Quotation Template are visible</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/36_field_before.png" alt="Before: fields such as Payment Terms and Quotation Template are visible"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: set fields Invisible under Field Access</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/37_field_config.png" alt="Configuration: set fields Invisible under Field Access"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: selected fields are hidden from the user</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/38_field_after.png" alt="After: selected fields are hidden from the user"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Button / Tab / Page Access</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Show or hide form buttons and notebook tabs based on the user rule.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Confirm button and Other Info tab are visible</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/39_button_before.png" alt="Before: Confirm button and Other Info tab are visible"/>
+                        </div>
+                        
+
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: hide Confirm button and Other Info tab</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/40_button_config.png" alt="Configuration: hide Confirm button and Other Info tab"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: button and tab are removed for that user</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/41_button_after.png" alt="After: button and tab are removed for that user"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Filter / Group By Access</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide specific search filters and group-by options from the search panel.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Order Date filter and Group By options are visible</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/42_filter_before.png" alt="Before: Order Date filter and Group By options are visible"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: select filters and group-by to hide</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/43_filter_config.png" alt="Configuration: select filters and group-by to hide"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: selected filters / group-by options are gone</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/44_filter_after.png" alt="After: selected filters / group-by options are gone"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Filter Domain Access Control</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Limit which records users can see using a domain. Preview shows how many records match.</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: user sees all statuses in the list</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/45_domain_before.png" alt="Before: user sees all statuses in the list"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: domain Status = Quotation with record preview</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/46_domain_config.png" alt="Configuration: domain Status = Quotation with record preview"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: user only sees matching records (e.g. Quotations)</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/47_domain_after.png" alt="After: user only sees matching records (e.g. Quotations)"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+
+                        <hr style="margin:36px 0 24px 0;border-top:2px solid #e2e8f0;"/>
+                        <h3 style="color:#1e1b4b;font-weight:800;font-size:22px;margin-bottom:8px;">Chatter Model Access Control</h3>
+                        <p style="color:#475569;font-size:16px;line-height:1.6;margin-bottom:12px;">Hide chatter only on selected models (instead of globally).</p>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Before: Chatter is visible on Sales Order</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/48_model_chatter_before.png" alt="Before: Chatter is visible on Sales Order"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">Configuration: Hide Chatter for Sales Order model</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/49_model_chatter_config.png" alt="Configuration: Hide Chatter for Sales Order model"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                        <div class="ng-shot-wrap" style="width:100%;max-width:100%;margin:0 0 22px 0;text-align:left;overflow:hidden;clear:both;">
+                            <h5 style="color:#0f172a;font-weight:800;margin:0 0 10px 0;text-align:left;">After: Chatter is hidden on that model</h5>
+                            <img class="img-responsive rounded ng-shot"
+                                width="100%" style="width:100% !important;max-width:100% !important;height:auto !important;display:block !important;float:none !important;clear:both !important;margin:0 0 12px 0;border:1px solid #cbd5e1;border-radius:8px !important;"
+                                src="screenshot/50_model_chatter_after.png" alt="After: Chatter is hidden on that model"/>
+                        </div>
+                        <br clear="all" style="clear:both;display:block;"/>
+
+                </td>
+                </tr>
+                </table>
+    </section>
+    </div>
+
+    <div class="tab-pane" id="ng-faq" role="tabpanel" aria-labelledby="ng-faq-tab">
+    <section class="mt-4">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">FAQs</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+                <div class="mb-3">
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">What does this module do?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">It manages menus, models, fields, buttons, tabs, filters, domains and chatter access for selected users without coding.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Can one rule apply to multiple users?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Yes. Add multiple users on the rule; all receive the same restrictions.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Different from Odoo built-in rights?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Native groups mainly cover model ACL. This app adds UI-level and domain-level control from one form.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Multi-company support?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Yes. Set Companies on the rule to scope restrictions.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Filter/Group By not hiding?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Ensure Users are set, select the exact filter name, then logout/login the affected user.</div>
+                </div>
+                <div class="mb-3">
+                    <div class="ng-faq-q" style="background-color:#ffffff; border-radius:12px; padding:14px 18px; font-weight:700; color:#0f172a; border:1px solid #e2e8f0;">Which Odoo versions?</div>
+                    <div class="ng-faq-a" style="background-color:#ffffff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; color:#64748b;">Odoo 18.0, Community, Enterprise and Odoo.sh.</div>
+                </div>
+    </section>
+    </div>
+
+    <div class="tab-pane" id="ng-support" role="tabpanel" aria-labelledby="ng-support-tab">
+    <section class="mt-4">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Support</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+                <div style="background:#fff; border-radius:16px; padding:24px; border:1px solid #e2e8f0; text-align:center;">
+                    <p style="font-size:18px; font-weight:700; margin-bottom:12px;">Need help?</p>
+                    <p style="margin:0 0 10px 0; font-weight:700;">
+                        <a href="mailto:next.gen.solutions2122@gmail.com" style="font-size:17px; color:#4f46e5; font-weight:700;">
+                            <i class="fa fa-envelope"></i> next.gen.solutions2122@gmail.com
+                        </a>
+                    </p>
+                    <p style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">
+                        WhatsApp:
+                        <a href="https://wa.me/919099767168" target="_blank" rel="noopener noreferrer"
+                           style="color:#4f46e5; font-weight:800; text-decoration:underline;">
+                            +91 90997 67168
+                        </a>
+                    </p>
+                    <p style="margin:8px 0 0 0; font-size:13px;">
+                        <a href="https://wa.me/919099767168" target="_blank" rel="noopener noreferrer"
+                           style="color:#4f46e5; font-weight:600; word-break:break-all; text-decoration:underline;">
+                            https://wa.me/919099767168
+                        </a>
+                    </p>
+                </div>
+    </section>
+    </div>
+    </div>
+
+    <!-- SERVICES (table layout so App Store CSS does not collapse the grid) -->
+    <section class="mt-5">
+        <h2 class="ng-section-title" style="font-size:28px; font-weight:800; color:#0f172a; text-align:center; margin:0 0 8px 0;">Our Services</h2>
+        <table align="center" width="90" cellpadding="0" cellspacing="0" border="0" style="width:90px; margin:0 auto 24px auto;">
+            <tr>
+                <td width="90" style="width:90px;">
+                    <img src="underline.png" alt="" width="90" height="4"
+                         style="width:90px !important; max-width:90px !important; height:4px !important; display:block; border:0;"/>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:separate;border-spacing:10px;">
+            <tr>
+                <td width="20%" valign="top" style="width:20%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 8px;text-align:center;">
+                    <div style="font-size:26px;color:#4f46e5;line-height:1;"><i class="fa fa-code"></i></div>
+                    <p style="margin:10px 0 0 0;font-weight:800;font-size:13px;color:#0f172a;">Odoo Development</p>
+                </td>
+                <td width="20%" valign="top" style="width:20%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 8px;text-align:center;">
+                    <div style="font-size:26px;color:#7c3aed;line-height:1;"><i class="fa fa-cogs"></i></div>
+                    <p style="margin:10px 0 0 0;font-weight:800;font-size:13px;color:#0f172a;">Odoo Customization</p>
+                </td>
+                <td width="20%" valign="top" style="width:20%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 8px;text-align:center;">
+                    <div style="font-size:26px;color:#06b6d4;line-height:1;"><i class="fa fa-rocket"></i></div>
+                    <p style="margin:10px 0 0 0;font-weight:800;font-size:13px;color:#0f172a;">Odoo Implementation</p>
+                </td>
+                <td width="20%" valign="top" style="width:20%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 8px;text-align:center;">
+                    <div style="font-size:26px;color:#4f46e5;line-height:1;"><i class="fa fa-exchange"></i></div>
+                    <p style="margin:10px 0 0 0;font-weight:800;font-size:13px;color:#0f172a;">Odoo Migration</p>
+                </td>
+                <td width="20%" valign="top" style="width:20%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 8px;text-align:center;">
+                    <div style="font-size:26px;color:#7c3aed;line-height:1;"><i class="fa fa-plug"></i></div>
+                    <p style="margin:10px 0 0 0;font-weight:800;font-size:13px;color:#0f172a;">Odoo Integration</p>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="mt-4 mb-2">
+        <table width="100%" cellpadding="0" cellspacing="0" style="width:100%;max-width:720px;margin:8px auto 0 auto;border-collapse:separate;border-spacing:16px;">
+            <tr>
+                <td width="50%" style="width:50%;background:#fff;border:2px solid #0f172a;border-radius:14px;padding:16px 12px;text-align:center;vertical-align:middle;">
+                    <div style="font-weight:800;font-size:16px;color:#0f172a;margin-bottom:6px;">
+                        <i class="fa fa-whatsapp" style="margin-right:8px;font-size:20px;"></i>WhatsApp
+                    </div>
+                    <div style="font-size:15px;font-weight:700;color:#0f172a;">+91 90997 67168</div>
+                    <div style="margin-top:8px;font-size:13px;font-weight:600;color:#4f46e5;word-break:break-all;">
+                        https://wa.me/919099767168
+                    </div>
+                </td>
+                <td width="50%" style="width:50%;background:#fff;border:2px solid #0f172a;border-radius:14px;padding:0;">
+                    <a href="mailto:next.gen.solutions2122@gmail.com"
+                       style="display:block;padding:16px 12px;text-align:center;font-weight:800;color:#0f172a;text-decoration:none;font-size:16px;">
+                        <i class="fa fa-envelope" style="margin-right:8px;font-size:20px;"></i>Email
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <p style="text-align:center; margin-top:22px; color:#64748b; font-size:13px;">
+            © NextGen · Access Rights Manager · Odoo 18
+        </p>
+    </section>
+</div>
+</body>
+</html>

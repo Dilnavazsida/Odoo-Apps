@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_access_rights_view_element_list" model="ir.ui.view">
+        <field name="name">access.rights.view.element.list</field>
+        <field name="model">access.rights.view.element</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="label" string="Label"/>
+                <field name="name" string="Technical Name"/>
+                <field name="element_type" optional="hide"/>
+                <field name="display_name" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_access_rights_view_element_search" model="ir.ui.view">
+        <field name="name">access.rights.view.element.search</field>
+        <field name="model">access.rights.view.element</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="label"/>
+                <field name="name"/>
+                <field name="display_name"/>
+                <filter string="Filters" name="type_filter" domain="[('element_type', '=', 'filter')]"/>
+                <filter string="Group By" name="type_groupby" domain="[('element_type', '=', 'groupby')]"/>
+            </search>
+        </field>
+    </record>
+</odoo>
